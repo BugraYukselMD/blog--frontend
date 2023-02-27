@@ -1,0 +1,98 @@
+.blogTitle{
+    font-size: calc(4vh + 10 * ((50vw - 400px) / 680));
+}
+
+.blogBody{
+    font-weight: 450;
+    font-size: large;
+}
+
+.blogFooter{
+    font-size: calc(15px + 1 * ((50vw - 400px) / 680));
+}
+
+
+@media only screen 
+and (min-width : 728px) {
+    .blogRow{
+        max-width:728px;
+    }
+}
+
+
+.blogRow{
+    z-index: 1;
+    background: #FFFFFF;
+    width: 80%;
+    text-align: center;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow:  0px 0px 15px 10px #bebebe;
+    margin:auto
+  }
+  
+.card{
+      background-color: #e0e0e0;
+  }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+.card textarea {
+  border: solid 1px white;
+  font-family: 'Comfortaa', cursive;
+  background: #e0e0e0;
+  line-height: 1.2em;
+}
+
+.card textarea:focus {
+  background: #e0e0e0;
+}
+
+.card button {
+  outline: 0;
+  background: #e0e0e0;
+  border: 0;
+  border-radius: px;
+  padding: 15px;
+  color: #FFFFFF;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  padding-bottom: 30px;
+  margin-left: 5px;
+}
+
+i {
+  font-size: x-large;
+  color: black;
+}
+
+.iBook{
+  font-size: xx-large;
+}
+
+.areaShow {
+  width: 40%;
+}
+
+/*
+.divHead button{
+  font-family: 'Comfortaa', cursive;
+  outline: 0;
+  background: #e0e0e0;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px;
+  color: #FFFFFF;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  box-shadow:  0px 0px 15px 10px #bebebe;
+}
+
+.alert {
+  background-color: #e0e0e0;
+  border: 0;
+}
+*/

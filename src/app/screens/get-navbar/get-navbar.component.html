@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-around align-items-center mx-auto linkRow">
+  <div>
+    <button routerLink="/" class="navButton">
+      <i class="bi bi-house-door navIcon"></i>
+    </button>
+    <button routerLink="/linktree" class="navButton">
+      <i class="bi bi-tree navIcon"></i>
+    </button>
+    <button *ngIf="!isAuthenticated" routerLink="/login" class="navButton">
+      <i class="bi bi-person navIcon"></i>
+    </button>
+    <button *ngIf="isAuthenticated" [routerLink]="profilePath" class="profileButton rounded-circle">
+      <img [src]="imgPath">
+    </button>
+    <button *ngIf="isAdmin" routerLink="/admin" class="navButton">
+      <i class="bi bi-gear navIcon"></i>
+    </button>
+  </div>
+  <div>
+    <app-get-footer></app-get-footer>
+  </div>
+</div>

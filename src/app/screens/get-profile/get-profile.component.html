@@ -1,0 +1,83 @@
+<div class="rowProfile my-5">
+  <div class="form" *ngIf="!directFav">
+    <div class="mb-5">
+      <input
+        type="file"
+        name="image"
+        id="custom-file-chooser-profile"
+        class="form-control"
+        hidden
+        (change)="getImage($event)"
+      />
+      <label for="custom-file-chooser-profile">
+        <img
+          class="rounded-circle"
+          [src]="updateImage ? updateImage : imgPath"
+          [alt]="user?.name"
+          width="150vw"
+          height="150vw"
+        />
+      </label>
+    </div>
+    <div>
+      <input
+        type="text"
+        id="username"
+        [value]="username"
+        #inputUsername
+        (change)="changeUsername(inputUsername.value)"
+        class="form-control"
+      />
+      <input
+        type="text"
+        id="email"
+        [value]="user?.email"
+        class="form-control"
+        readonly
+      />
+    </div>
+
+    <div class="d-flex mx-auto justify-content-center">
+      <button (click)="updateProfile()">
+        <i class="bi bi-arrow-counterclockwise"></i>
+      </button>
+      <button (click)="logout()">
+        <i class="bi bi-arrow-bar-right"></i>
+      </button>
+      <button (click)="changeDiv()">
+        <i class="bi bi-journal-bookmark-fill"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="form" *ngIf="directFav">
+    <button (click)="changeDiv()">PROFİLE GERİ DÖN</button>
+    <hr />
+    <div *ngIf="favs?.length == 0">Favorilenmiş blog bulunamadı</div>
+    <table class="table my-5" *ngIf="!(favs?.length == 0)">
+      <tbody class="mx-auto">
+        <tr
+          *ngFor="let fav of favs"
+          class="d-flex justify-content-center align-items-center"
+        >
+          <td>
+            <a
+              class="text-decoration-none text-muted text-center"
+              href="/#/blog/{{ fav._id }}"
+              >{{ fav.title }}</a
+            >
+          </td>
+          <!--
+           <td>
+            <button (click)="removeFromFavourites(fav._id)">
+              <i class="bi bi-x"></i>
+            </button>
+          </td> 
+          -->
+          
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+  </div>
+</div>

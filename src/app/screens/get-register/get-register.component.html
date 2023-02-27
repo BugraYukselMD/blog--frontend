@@ -1,0 +1,66 @@
+<div class="rowRegister pt-5">
+  <div class="column">
+    <div class="row my-5 divHead">
+      <button routerLink="/login">GİRİŞ YAP</button>
+      <button type="button" class="btn btn-secondary" disabled>KAYIT OL</button>
+    </div>
+  </div>
+  <div class="form" *ngIf="registerForm">
+    <form
+      class="register-form"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="form-control"
+          placeholder="Kullanıcı Adı"
+        />
+        <input
+          type="text"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          placeholder="E-Mail"
+        />
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="Şifre"
+        />
+        <input
+          type="password"
+          id="passwordAgain"
+          formControlName="passwordAgain"
+          class="form-control"
+          placeholder="Şifre Tekrar"
+        />
+        <label id="file-chooser-register">
+          <p>
+            Profil Fotoğrafı &nbsp;&nbsp;
+            <i class="bi bi-plus-circle-dotted">
+              <input
+                type="file"
+                name="image"
+                id="custom-file-chooser-register"
+                class="form-control"
+                hidden
+                (change)="getImage($event)"
+              />
+            </i>
+            <img [src]="imgSrc" *ngIf="imgSrc" class="mt-5"/>
+          </p>
+        </label>
+      </div>
+
+      <div>
+        <button [disabled]="!registerForm.valid">KAYIT OL</button>
+      </div>
+    </form>
+  </div>
+</div>

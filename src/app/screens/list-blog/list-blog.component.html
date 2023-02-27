@@ -1,0 +1,27 @@
+<div>
+  <div *ngIf="blogs" class="row px-5">
+    <div class="row listRow">
+
+      <div class="divAbout py-5">
+        <app-get-about></app-get-about>
+      </div>
+      <hr class="pb-2">
+      <h5 class="pb-3"> YAZILARIM</h5>
+      <div *ngFor="let blog of blogs.reverse()" class="col-md-4 divBlog">
+        <a routerLink="/blog/{{blog._id}}" class="text-decoration-none">
+          <div class="card mb-4 shadow-sm listCard">
+            <div class="card-body">
+              <p class="card-text">
+                <strong>{{blog.title}}</strong>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">~{{blog.readMin}} dakika</small>
+                <small class="text-muted">•{{blog.date}}</small> 
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

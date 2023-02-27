@@ -1,0 +1,64 @@
+<div class="rowLinks">
+  <div *ngIf="links">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col" colspan="4" class="mx-auto">
+            <h5 class="text-center">LİNKLERİM</h5>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="mx-auto">
+        <tr *ngFor="let link of links">
+          <td><i class="{{ link.linkImage }}"></i></td>
+          <td>
+            <a href="{{ link.linkUrl }}">{{ link.linkName }}</a>
+          </td>
+          <td>
+            <button class="linkButton" (click)="delete(link._id)">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="rowLink">
+      <div class="form mt-5">
+        <div class="link-form">
+          <input
+            type="text"
+            id="linkName"
+            [(ngModel)]="linkName"
+            class="form-control"
+            placeholder="Link Adı"
+          />
+          <input
+            type="text"
+            id="linkUrl"
+            [(ngModel)]="linkUrl"
+            class="form-control"
+            placeholder="Link Url"
+          />
+          <input
+            type="text"
+            id="linkImage"
+            [(ngModel)]="linkImage"
+            class="form-control"
+            placeholder="Link Class"
+          />
+          <button
+            [disabled]="
+              linkName.length == 0 ||
+              linkUrl.length == 0 ||
+              linkImage.length == 0
+            "
+            (click)="onSubmit()"
+          >
+            EKLE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

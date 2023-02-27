@@ -1,0 +1,17 @@
+<div *ngIf="links" class="py-5 mt-5">
+  <div class="mx-auto mb-5">
+    <img class="linktreeImg rounded-circle" [src]="imgPath" />
+  </div>
+  <div *ngFor="let link of links">
+    <div class="contDiv my-3">
+      <a href="{{ link.linkUrl }}" target="_blank" class="text-decoration-none">
+        <div class="linkDiv">
+          <i class="{{ link.linkImage }} linkImg"></i>
+          <strong class="linkName text-decoration-none my-1 mx-4">
+            {{ link.linkName }}
+          </strong>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

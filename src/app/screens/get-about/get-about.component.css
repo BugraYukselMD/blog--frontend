@@ -1,0 +1,13 @@
+.aboutText{
+    font-weight: 450;
+    font-size: large;
+}
+
+h5{
+    font-weight: 600;
+    font-size: xx-large;
+}
+
+p, h5{
+    text-align: center;
+}

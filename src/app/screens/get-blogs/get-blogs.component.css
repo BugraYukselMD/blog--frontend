@@ -1,0 +1,27 @@
+@media only screen 
+and (min-width : 962px) {
+    .rowBlogs{
+        max-width:962px;
+    }
+}
+
+.rowBlogs {
+  display: flex;
+  justify-content: center;   
+  width: 80%;
+  padding-top: 30px;
+  margin: auto;
+  font-family: 'Comfortaa', cursive;
+  border-radius: 50px;
+}
+
+.blogsButton{
+    background-color: white;
+    border: none;
+    outline: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,66 @@
+<div class="rowAddBlog pt-5">
+  <div class="form">
+    <form class="add-blog-form" (ngSubmit)="onSubmit()">
+      <input
+        class="form-control"
+        placeholder="Blog Başlığı"
+        #inputTitle
+        (change)="changeTitle(inputTitle.value)"
+      />
+      <label class="form-label">
+        Okuma Süresi &nbsp;&nbsp;
+        <div class="d-flex justify-content-start align-items-start">
+          <div>
+            <input
+              type="range"
+              [value]="readMin"
+              min="1"
+              max="20"
+              step="1"
+              id="readMin"
+              #inputReadMin
+              (change)="changeReadMin(inputReadMin.value)"
+            />
+          </div>
+          <div>
+            <small>{{ readMin }}</small>
+          </div>
+        </div>
+      </label>
+
+      <label id="file-chooser-add-blog">
+        <p>
+          Profil Fotoğrafı &nbsp;&nbsp;
+          <i class="bi bi-plus-circle-dotted">
+            <input
+              type="file"
+              name="image"
+              id="custom-file-chooser-add-blog"
+              class="form-control"
+              hidden
+              (change)="getImage($event)"
+            />
+          </i>
+          <img [src]="imgSrc" *ngIf="imgSrc" />
+        </p>
+      </label>
+
+      <div *ngIf="categories">
+        <label *ngFor="let category of categories">
+          <div class="d-flex justify-content-start divChecks">
+            <input
+              type="checkbox"
+              [value]="category._id"
+              (change)="checkCategory(category._id)"
+            />
+            <label>{{ category.categoryName }}</label>
+          </div>
+        </label>
+      </div>
+
+      <app-angular-editor (blogBodyOut)="getBody($event)"></app-angular-editor>
+
+      <button type="submit" class="formButton">EKLE</button>
+    </form>
+  </div>
+</div>

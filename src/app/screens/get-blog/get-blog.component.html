@@ -1,0 +1,182 @@
+<div class="blogRow mx-auto my-5" *ngIf="blog">
+  <div class="card border-0 mx-5">
+    <div class="card-body">
+      <div class="d-flex justify-content-center align-items-stretch">
+        <div>
+          <strong class="blogTitle text-break">
+            {{ blog.title }}
+          </strong>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center align-items-center mt-3">
+        <div class="row">
+          <small class="text-muted blogFooter">• {{ blog.date }}</small>
+          <small class="text-muted blogFooter"
+            >~ {{ blog.readMin }} dakika
+          </small>
+        </div>
+        <div *ngIf="isAuthenticated" class="row mt-2">
+          <button *ngIf="!isFav" (click)="addToFavourites()">
+            <i class="bi bi-bookmark-plus-fill iBook"></i>
+          </button>
+          <button *ngIf="isFav" (click)="removeFromFavourites()">
+            <i  class="bi bi-bookmark-check-fill iBook"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="text-break blogBody my-5" [innerHTML]="blog.body"></div>
+
+    <div class="divComment">
+      <hr />
+      <div class="row gap-3 my-5" *ngIf="blog.comments">
+        <div
+          class="card border-0 shadow mx-auto col-md-6"
+          *ngFor="let comment of blog.comments"
+        >
+          <div class="d-flex justify-content-start align-items-center">
+            <img
+              class="card-img"
+              [src]="imgPath + comment.user.imageUrl"
+              [alt]="comment.user.name"
+              [title]="comment.user.name"
+              class="rounded-circle"
+              width="40rem"
+              height="40rem"
+            />
+
+            <div class="card-body areaShow">
+              <p class="text-break">{{ comment.message }}</p>
+            </div>
+
+            <div *ngIf="user">
+              <div *ngIf="user._id == comment.user._id || user.isAdmin">
+                <button type="button" (click)="deleteComment(comment._id)">
+                  <i class="bi bi-x"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!--
+              <input
+              type="radio"
+              name="card"
+              [value]="comment._id"
+              [id]="comment._id"
+              (change)="radioChange(comment._id)"
+            />
+            -->
+
+          <!--
+                <div *ngIf="comment.replies.length > 0">
+                  <div *ngFor="let reply of comment.replies">
+                    <div class="d-flex justify-content-start align-items-start">
+                      <div>
+                        <img
+                          [src]="imgPath + reply.user.imageUrl"
+                          [alt]="reply.user.name"
+                          [title]="reply.user.name"
+                          class="rounded-circle"
+                          width="40rem"
+                          height="40rem"
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex justify-content-center align-items-center"
+                    >
+                      <div class="areaShow">
+                        <p class="text-break">{{ reply.reply }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>  
+                -->
+        </div>
+      </div>
+
+      <div class="row gap-3 mb-5" *ngIf="isAuthenticated">
+        <!--
+        <div class="d-flex justify-content-center divHead">
+          <button
+            type="button"
+            [ngClass]="{ 'btn btn-secondary': isCommentToggled }"
+            (click)="changeRow(selectOptions.comment)"
+            [disabled]="selectedRow == selectOptions.comment"
+          >
+            YORUM YAZ
+          </button>
+          <button
+            type="button"
+            [ngClass]="{ 'btn btn-secondary': isReplyToggled }"
+            (click)="changeRow(selectOptions.reply)"
+            [disabled]="selectedRow == selectOptions.reply"
+          >
+            YANITLA
+          </button>
+        </div>  
+        -->
+
+        <div
+          class="card border-0 shadow mx-auto col-md-6"
+          *ngIf="selectedRow == selectOptions.comment"
+        >
+          <form (ngSubmit)="sendComment()">
+            <div class="d-flex">
+              <textarea
+                id="message"
+                name="message"
+                class="form-control border-0"
+                [(ngModel)]="comment"
+                [placeholder]="placeholderComment"
+              >
+              </textarea>
+              <button
+                type="submit"
+                [disabled]="comment == ''"
+                class="btn-outlined border-o"
+              >
+                <i class="bi bi-arrow-right-circle"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!--
+        <div *ngIf="selectedRow == selectOptions.reply">
+          <div *ngIf="!selectedComment" class="">
+            <p class="alert my-5">
+              Lütfen cevap yazmak için bir mesaj seçiniz...
+            </p>
+          </div>
+
+          <div *ngIf="selectedComment" class="">
+            <div class="form my-5">
+              <form class="add-reply-form" (ngSubmit)="sendReply()">
+                <div class="d-flex mx-auto areaInput">
+                  <textarea
+                    id="reply"
+                    name="reply"
+                    class="form-control"
+                    [(ngModel)]="reply"
+                    [placeholder]="placeholderReply"
+                  >
+                  </textarea>
+                  <button type="submit" [disabled]="reply == ''">
+                    <i class="bi bi-arrow-right-circle"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>  
+        </div>  
+        -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="rowLogin pt-5">
+  <div class="column ">
+    <div class="row my-5 divHead">
+      <button type="button"  class="btn btn-secondary" disabled>
+        GİRİŞ YAP
+      </button>
+      <button routerLink="/register">
+        KAYIT OL
+      </button>
+    </div>
+  </div>
+  
+  <div class="form" *ngIf="loginForm">
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input type="text" id="email" formControlName="email" class="form-control" placeholder="E-Mail">  
+      <input type="password" id="password" formControlName="password" class="form-control" placeholder="Şifre">
+      <button [disabled]="!loginForm.valid">GİRİŞ YAP</button>
+    </form>  
+  </div>
+</div>

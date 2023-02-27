@@ -1,0 +1,74 @@
+<div class="rowEditBlog pt-5">
+  <div class="form">
+    <form class="edit-blog-form" (ngSubmit)="onSubmit()">
+      <input
+        class="form-control"
+        placeholder="Blog Başlığı"
+        [value]="title"
+        #inputTitle
+        (change)="changeTitle(inputTitle.value)"
+      />
+      <label class="form-label">
+        Okuma Süresi &nbsp;&nbsp;
+        <div class="d-flex justify-content-start align-items-start">
+          <div>
+            <input
+              type="range"
+              [value]="editMin"
+              min="1"
+              max="20"
+              step="1"
+              id="editMin"
+              #inputReadMin
+              (change)="changeReadMin(inputReadMin.value)"
+            />
+          </div>
+          <div>
+            <small>{{ inputReadMin.value }}</small>
+          </div>
+        </div>
+      </label>
+
+      <label id="file-chooser-edit-blog">
+        <p>
+          Profil Fotoğrafı &nbsp;&nbsp;
+          <i class="bi bi-plus-circle-dotted">
+            <input
+              type="file"
+              name="image"
+              id="custom-file-chooser-edit-blog"
+              class="form-control"
+              hidden
+              (change)="getImage($event)"
+            />
+          </i>
+          <img [src]="imgSrc" *ngIf="imgSrc && !image" />
+          <img [src]="newImgSrc" *ngIf="image" />
+        </p>
+      </label>
+
+      <div *ngIf="categories">
+        <label *ngFor="let category of categories">
+          <div class="d-flex justify-content-start divChecks">
+            <input
+              type="checkbox"
+              [value]="category._id"
+              (change)="checkCategory(category._id)"
+              [checked]="initCheckedCategories?.includes(category._id)"
+            />
+            <label>{{ category.categoryName }}</label>
+          </div>
+        </label>
+      </div>
+
+      <app-angular-editor
+        [blogBody]="blog?.body"
+        (blogBodyOut)="getBody($event)"
+      ></app-angular-editor>
+
+      <button type="submit" class="formButton">
+        GÜNCELLE
+      </button>
+    </form>
+  </div>
+</div>

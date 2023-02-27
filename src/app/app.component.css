@@ -1,0 +1,16 @@
+.divNav{
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    padding-top: 30px;
+    width: 100%;
+    height: 100px;
+}
+
+.divRouter{
+    margin-top: 100px;
+}
+
+.main{
+    overflow: hidden;
+}
