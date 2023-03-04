@@ -13,7 +13,7 @@ export class RestService {
 
 constructor(private http: HttpClient) { }
 
-path:string = "http://blog--backend.herokuapp.com/api/v1";
+path:string = "https://blog--backend.herokuapp.com/api/v1";
 blogsUrl:string = this.path + "/blogs";
 blogUrl:string = this.path + "/blog/";
 linktreeUrl:string = this.path+ "/linktree";
