@@ -25,7 +25,7 @@ export class AdminService {
     private alertifyService: AlertifyService
   ) {}
 
-  path: string = 'http://blog--backend.herokuapp.com/api/v1/admin';
+  path: string = 'https://blog--backend.herokuapp.com/api/v1/admin';
   saveImageUrl: string = this.path + '/save-blog-cover-image';
   addBlogUrl: string = this.path + '/add-blog';
   editBlogUrl: string = this.path + '/edit-blog';
