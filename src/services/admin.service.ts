@@ -25,7 +25,7 @@ export class AdminService {
     private alertifyService: AlertifyService
   ) {}
 
-  path: string = 'http://localhost:3000/api/v1/admin';
+  path: string = 'api/v1/admin';
   saveImageUrl: string = this.path + '/save-blog-cover-image';
   addBlogUrl: string = this.path + '/add-blog';
   editBlogUrl: string = this.path + '/edit-blog';

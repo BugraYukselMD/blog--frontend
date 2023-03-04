@@ -21,7 +21,7 @@ export class AuthService {
     private cookieService: CookieService_
   ) {}
 
-  path: string = 'http://localhost:3000/api/v1';
+  path: string = 'api/v1';
   loginUrl: string = this.path + '/login';
   registerUrl: string = this.path + '/register';
   sendCommentUrl: string = this.path + '/send-comment';
