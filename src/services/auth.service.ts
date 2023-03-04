@@ -21,7 +21,7 @@ export class AuthService {
     private cookieService: CookieService_
   ) {}
 
-  path: string = 'api/v1';
+  path: string = 'http://blog--backend.herokuapp.com/api/v1';
   loginUrl: string = this.path + '/login';
   registerUrl: string = this.path + '/register';
   sendCommentUrl: string = this.path + '/send-comment';
