@@ -9,7 +9,7 @@ export class BlogRepository implements AfterContentChecked {
   constructor(
     private restService: RestService
     ) {
-    this.restService.getBlogs().subscribe((blogs) => (this.blogs = blogs));
+    this.restService.getBlogs().subscribe((blogs) => (this.blogs = blogs.reverse()));
   }
 
   ngAfterContentChecked() {}
