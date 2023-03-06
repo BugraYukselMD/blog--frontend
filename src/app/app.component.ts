@@ -12,8 +12,8 @@ export class AppComponent implements AfterContentChecked {
   title = 'blog--frontend';
   blogs:Blog[] = [];
 
-  constructor(private 
-    cookieService: CookieService_,
+  constructor(
+    private cookieService: CookieService_ ,
     private blogRepo: BlogRepository
   ) {}
 
