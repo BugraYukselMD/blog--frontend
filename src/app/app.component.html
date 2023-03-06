@@ -1,8 +1,17 @@
-<div class="row main">
-  <div class="divNav">
-      <app-get-navbar></app-get-navbar>
+<div *ngIf="blogs.length == 0">
+  <div class="page-loader">
+    <div class="spinner"></div>
+    <div class="txt">Site Hazır Hale Getiriliyor...</div>
   </div>
-  <div class="divRouter">
+</div>
+
+<div *ngIf="blogs.length > 0">
+  <div class="row main">
+    <div class="divNav">
+      <app-get-navbar></app-get-navbar>
+    </div>
+    <div class="divRouter">
       <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
