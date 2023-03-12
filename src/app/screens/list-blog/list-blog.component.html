@@ -1,26 +1,74 @@
 <div>
   <div *ngIf="blogs" class="row px-5">
     <div class="row listRow">
-
       <div class="divAbout py-5">
         <app-get-about></app-get-about>
       </div>
-      <hr class="pb-2">
-      <h5 class="pb-3"> YAZILARIM</h5>
-      <div *ngFor="let blog of blogs" class="col-md-4 divBlog">
-        <a routerLink="/blog/{{blog._id}}" class="text-decoration-none">
-          <div class="card mb-4 shadow-sm listCard">
-            <div class="card-body">
-              <p class="card-text">
-                <strong>{{blog.title}}</strong>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">~{{blog.readMin}} dakika</small>
-                <small class="text-muted">•{{blog.date}}</small> 
+      <hr class="pb-2" />
+      <div class="d-flex justify-content-between">
+        <h5 class="pb-3">YAZILARIM</h5>
+        <button class="filterButton" (click)="changeIsClicked()">
+          <i class="bi bi-sliders2-vertical"></i>
+        </button>
+      </div>
+      <div *ngIf="isClicked" class="divFilter my-2 pb-3 mx-auto">
+        <div class="d-flex gap-3">
+          <button
+            (click)="changeSelectedCategory(all)"
+            class="filter"
+            [disabled]="selectedCategory == all"
+          >
+            Tümü
+          </button>
+          <div *ngFor="let cat of categories">
+            <button
+              (click)="changeSelectedCategory(cat._id)"
+              class="filter"
+              [disabled]="selectedCategory == cat._id"
+            >
+              {{ cat.categoryName }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!isChanged" class="row">
+        <div *ngFor="let blog of blogs.reverse()" class="col-md-4 divBlog">
+          <a routerLink="/blog/{{ blog._id }}" class="text-decoration-none">
+            <div class="card mb-4 shadow-sm listCard">
+              <div class="card-body">
+                <p class="card-text">
+                  <strong>{{ blog.title }}</strong>
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">~{{ blog.readMin }} dakika</small>
+                  <small class="text-muted">•{{ blog.date }}</small>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="isChanged" class="row">
+        <div *ngFor="let blog of newBlogs.reverse()" class="col-md-4 divBlog">
+          <a routerLink="/blog/{{ blog._id }}" class="text-decoration-none">
+            <div class="card mb-4 shadow-sm listCard">
+              <div class="card-body">
+                <p class="card-text">
+                  <strong>{{ blog.title }}</strong>
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">~{{ blog.readMin }} dakika</small>
+                  <small class="text-muted">•{{ blog.date }}</small>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="newBlogs.length == 0">
+        <p class="mx-auto">Bu Kategoride Yazı Bulunamadı!</p>
       </div>
     </div>
   </div>
