@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <div *ngIf="newBlogs.length == 0">
+      <div *ngIf="newBlogs.length == 0 && selectedCategory != all">
         <p class="mx-auto">Bu Kategoride Yazı Bulunamadı!</p>
       </div>
     </div>
