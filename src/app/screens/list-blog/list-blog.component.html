@@ -50,7 +50,7 @@
       </div>
 
       <div *ngIf="isChanged" class="row">
-        <div *ngFor="let blog of newBlogs.reverse()" class="col-md-4 divBlog">
+        <div *ngFor="let blog of newBlogs" class="col-md-4 divBlog">
           <a routerLink="/blog/{{ blog._id }}" class="text-decoration-none">
             <div class="card mb-4 shadow-sm listCard">
               <div class="card-body">
